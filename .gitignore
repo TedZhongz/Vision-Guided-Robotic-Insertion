@@ -1,0 +1,49 @@
+# Private project data
+/01_images_raw/
+/02_annotation/
+/03_dataset/
+/dataset/
+/9点标定/
+/output/
+
+# Training and inference outputs (publish only the selected final model)
+/runs/**
+!/runs/segment/
+!/runs/segment/exp5/
+!/runs/segment/exp5/weights/
+!/runs/segment/exp5/weights/best.pt
+
+# Unused local model files
+/yolo11n.pt
+/yolo26n.pt
+
+# Local application state and reference material
+/main_settings.json
+/参考程序/
+/新建 文本文档.txt
+/.claude/
+/.idea/
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+*.cache
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Logs, temporary files and operating-system metadata
+logs/
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+~$*
+.DS_Store
+Thumbs.db
+
+# Local secrets
+.env
+.env.*

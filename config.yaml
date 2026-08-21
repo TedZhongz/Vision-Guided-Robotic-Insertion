@@ -1,0 +1,68 @@
+# =====================================================================
+# 充电桩视觉定位项目 —— 全局配置文件
+# 所有相对路径均相对于“项目根目录”（本文件所在目录）解析
+# =====================================================================
+
+paths:
+  raw_images: 01_images_raw        # 1-1 图像数据文件夹（存放原始图片）
+  annotation: 02_annotation        # 1-2 标注数据文件夹
+  dataset: 03_dataset              # 1-3 YOLO 训练文件夹
+  weights: yolo11n-seg.pt          # 预训练权重（需放在项目根目录）
+  runs: runs                       # 训练 / 推理输出目录
+  output: output                   # 主程序可视化结果输出目录
+
+# 类别名称列表：列表下标即 YOLO 类别 id（可按需增删改）
+classes:
+  - charging_pile                  # 0: 充电桩
+
+target_class: charging_pile        # 主程序中要定位的目标类别名
+
+# 数据集划分比例（train + val + test = 1.0）
+split:
+  train: 0.7
+  val: 0.2
+  test: 0.1
+  seed: 42                         # 随机种子，保证划分可复现
+
+# 训练超参数
+train:
+  epochs: 100
+  imgsz: 640
+  batch: 8
+  workers: 0                       # Windows 下建议 0，避免多进程问题
+  device: 0                        # GPU 编号；改用 CPU 请写 cpu
+
+# 推理参数
+infer:
+  weights: ""                      # 留空 = 自动查找 runs/segment 下最新的 best.pt
+  conf: 0.25                       # 置信度阈值
+
+# 相机配置
+camera:
+  # 相机类型：mock(回放本地图片，无需硬件) / realsense / opencv
+  type: mock
+  mock_image_dir: 02_annotation/images   # mock 模式回放的彩色图目录
+  mock_depth_dir: ""                     # mock 模式深度图目录（同名 16bit png），留空则用固定深度
+  mock_default_depth_m: 0.6              # mock 模式无深度图时的固定深度（米）
+  opencv_color_index: 0                  # opencv 模式彩色相机索引
+  opencv_depth_index: 1                  # opencv 模式深度相机索引
+  depth_scale: 0.001                     # 深度图原始值 × depth_scale = 米（毫米图填 0.001）
+  # 彩色相机内参（像素），back-project 需要，请用相机标定结果填写
+  fx: 615.0
+  fy: 615.0
+  cx: 320.0
+  cy: 240.0
+
+# 标定文件
+calibration:
+  file_2d: calibration/calib_2d.json     # 2D 九点标定结果（单应矩阵）
+  file_3d: calibration/calib_3d.json     # 3D 空间点标定结果（4x4 变换）
+  points_2d: calibration/points_2d.txt   # 2D 标定点对输入文件
+  points_3d: calibration/points_3d.txt   # 3D 标定点对输入文件
+
+# 机器人 TCP 通信
+robot:
+  ip: 192.168.1.100
+  port: 8080
+  timeout_s: 3.0
+  units: mm                        # 发送给机器人的坐标单位（本项目流程固定 mm）

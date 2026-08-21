@@ -1,0 +1,8 @@
+numpy
+opencv-python
+PyYAML
+ultralytics
+PyQt5
+pyrealsense2
+pyvista
+pyvistaqt
