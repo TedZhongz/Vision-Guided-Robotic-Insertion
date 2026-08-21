@@ -1,4 +1,4 @@
-# MSc Robotics RGB-D Vision Positioning System
+# Vision-Guided Robotic Insertion
 
 基于 RGB-D 相机、Ultralytics YOLO 实例分割、三维点云、空间标定和 TCP 通信的机器人视觉定位项目。
 
@@ -255,7 +255,7 @@ The executable is used to:
 - Receive the calculated `X/Y/Z` coordinates
 - Support automatic robot movement based on the received coordinates
 
-[Download `frrjiftest0817.exe` from GitHub Releases](https://github.com/tedzhong27149/RGB-D-Vision-Positioning/releases). Repository access is required while the project remains private.
+[Download `frrjiftest0817.exe` from GitHub Releases](https://github.com/tedzhong27149/Vision-Guided-Robotic-Insertion/releases). Repository access is required while the project remains private.
 
 ## Results
 
