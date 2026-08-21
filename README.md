@@ -100,7 +100,7 @@ X:123.456;Y:234.567;Z:345.678
 
 - Intel RealSense D435I RGB-D camera
 - Windows PC
-- Robot system: `TODO: Add robot manufacturer and model.`
+- Robot system: `Universal Robots UR5e.`
 - Network connection between the companion EXE and robot controller
 
 ## Software
